@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title></title>
+        <meta charset="utf-8" />
+        <meta name="descrição" content="Login usando jtw para trabalho da faculdade" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+        <link rel='stylesheet' type='text/css' href='../assets/css/main.css'/>
+        <script src='../assets/js/main.js'></script>
+    </head>
+
+    <body>
+        <div class='container'>
+            <div class="header">
+                <div>
+                    <a href='#' id='logo'></a>
+                </div>
+                <h1>Comunidade JavaScriptters</h1>
+                <div>
+                    <button id='logon'></button>
+                </div>
+            </div>
+
+            <div class="jumbotron">
+                <div>
+                    <img src='../assets/img/mosaic2.jpg' id='foto-perfil'/>    
+                </div>
+
+                <form>
+                    <div>
+                        <label for='email' id='lemail'>Email</label>
+                        <input type='email' id='email' onclick="translateLabel(this.id, 0)" onblur="checkInput(this)" />
+                    </div>
+                    <div>
+                        <label for='senha' id='lsenha'>Senha</label>
+                        <input type='password' id='senha' onclick="translateLabel(this.id, 0)" onblur="checkInput(this)" />
+                    </div>
+
+                    <button id='entrar' onclick="logar()">Entrar</button>
+
+                    <div>
+                        <a href=''>Esqueci a senha!</a>
+                        <a href=''>Cadastra-se!</a>
+                    </div>
+                </form>
+                <h2 id='usuarioLogado'>Bem Vindo &nome !</h2>
+                <h2 id='usuarioDeslogado'>Até a próxima &nome !</h2>
+            </div>
+        </div>
+    </body>
+</html>
