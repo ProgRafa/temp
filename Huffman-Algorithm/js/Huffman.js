@@ -1,65 +1,99 @@
 class Huffman{
-    constructor(){}
+    constructor(){
+    }
 
-    hashFrequency(input){
-        let chars = new Array();
-        let nodes = new Array();
-        let freq;
-        let filter;
+    heapFrequency(input, callback){
+        try{
+            let chars = new Array();
+            let heap = new Array();
+            let freq;
+            let lenAnt;
 
-        for(let i in input)
-            chars.push(new Char(input[i]));
+            for(let i in input)
+                chars.push(input[i]);  
 
-        chars.forEach(char =>{
-                freq = 0;
-                if(nodes.length == 0 || nodes.find(node => node.char == char.charCode10) == undefined){
-                    filter = chars.filter(compareChar => compareChar.charCode10 == char.charCode10);
-                    freq = filter.length;
-                    nodes.push(new Node(freq, char.charCode10));
-                }
+            while(chars.length > 0){
+                let temp = chars[0];
+                lenAnt = chars.length;
+                chars = chars.filter(charFil => charFil != temp);
+                freq = lenAnt - chars.length;
+                heap.push(new Node(freq, temp));
             }
-        );    
 
-        return nodes;
+            heap.sort((nodeA, nodeB) => nodeA.frequency - nodeB.frequency);
+
+            if(callback != undefined)
+                return callback(heap)
+            else
+                return heap;
+        }catch(ex){
+            console.log(ex);
+        }
     }
 
-    huffmanTree(input){
-        let huffTree;
-        let nodes;
+    Tree(heap){
+        try{
+            let miNode1;
+            let miNode2;
+            let root;
+            let node;
+            let nodes = heap;
 
-        nodes = this.hashFrequency(input);
-        huffTree = new BinaryTree(nodes);
-
-        return huffTree;
-    }
-
-    huffmanTransformTree(input){
-        let huffTree;
-        let miNode1;
-        let miNode2;
-        
-        huffTree = this.huffmanTree(input);
-        miNode1 = this.minorNode(huffTree.root);
-
-        //huffTree.deleteNode(miNode1);
-
-        miNode2 = this.minorNode(huffTree.root);
-
-        //huffTree.deleteNode(miNode2);
-
-        console.log(huffTree);
-        console.log(miNode1);
-        console.log(miNode2);
-    }
-
-    minorNode(root){
-        if(root.leftLeaf == null && root.rightLeaf == null)
-            return root
-        else if(root.leftLeaf != null)
-            root = this.minorNode(root.leftLeaf);
-        else if(root.rightLeaf != null)
-            root = this.minorNode(root.rightLeaf);
+            while(nodes.length != 2){
+                miNode1 = Huffman.minorNode(nodes);
+                miNode2 = Huffman.minorNode(nodes);
             
-        return root;
+                node = new Node(miNode1.frequency + miNode2.frequency, miNode1.char + miNode2.char);
+                node.leftLeaf = miNode1;
+                node.rightLeaf = miNode2;
+                nodes = nodes.filter(n => n != miNode1 && n != miNode2);
+                nodes.push(node);
+
+                //nodes.sort((nodeA, nodeB) => nodeA.frequency - nodeB.frequency);
+            }
+
+            root = new Node(nodes[0].frequency + nodes[1].frequency, '*');
+            root.leftLeaf = nodes[0];
+            root.rightLeaf = nodes[1];
+            
+            return root;
+        }catch(ex){
+            console.log(ex);
+        }
+    }
+
+    printTreeBin(root, char){
+        try{   
+            if(root == null)
+                return '';
+            if(root.char == char)
+                return '';
+
+            if(root.leftLeaf != null && root.leftLeaf.char.includes(char))
+                return '0' + this.printTreeBin(root.leftLeaf, char);
+            
+            if(root.rightLeaf != null && root.rightLeaf.char.includes(char))
+                return '1' + this.printTreeBin(root.rightLeaf, char);
+        }catch(ex){
+            console.log(ex);
+        }
+    }
+
+    static minorNode(heap){
+        try{
+            let minor = new Node(0, '');
+
+            heap.forEach(node => {
+                if((minor.frequency > node.frequency || minor.frequency == 0) && !node.ignore){
+                    minor.ignore = false;
+                    minor = node;
+                    node.ignore = true;
+                }
+            })
+
+            return minor;
+        }catch(ex){
+            console.log(ex);
+        }
     }
 }

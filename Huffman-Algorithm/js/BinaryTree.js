@@ -1,10 +1,10 @@
 class Node{
     constructor(freq, char){
         this.char = char;
-        this.frequency = freq;
-        this.length = null;  
+        this.frequency = freq;  
         this.leftLeaf = null;
         this.rightLeaf = null;
+        this.ignore = false;
     }
 }
 
@@ -102,6 +102,8 @@ class BinaryTree{
             else{
                 root.rightLeaf = this.deleteNode(node, root.rightLeaf); 
             }
+
+            return root;
         }catch(ex){
             console.log(ex);
         }
@@ -127,16 +129,4 @@ class BinaryTree{
             console.log(ex);
         }
     }     
-}
-
-window.onload = function(){
-    nodes = new Array();
-    let randomValues = new Array(50);
-
-    for(let i = 0; i < 10; i++)
-        randomValues[i] = parseInt((Math.random() * 200 + 1).toFixed(0));
-    
-        randomValues.forEach( value => nodes.push(new Node(value, String.fromCharCode(value))));
-
-
 }
