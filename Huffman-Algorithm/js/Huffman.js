@@ -79,6 +79,31 @@ class Huffman{
         }
     }
 
+    printTreeChar(root, bits){
+        try{   
+            let tree = JSON.parse(JSON.stringify(root));
+            let word = '';
+            tree.leftLeaf = root.leftLeaf;
+            tree.rightLeaf = root.rightLeaf;
+
+            for(let i in bits){
+                if(bits[i] == '0')
+                    tree = tree.leftLeaf;
+                if(bits[i] == '1')
+                    tree = tree.rightLeaf;
+                if(tree.char.length == 1){  
+                    word += tree.char;
+                    tree = JSON.parse(JSON.stringify(root));
+                    continue;
+                }
+            }
+
+            return word;
+        }catch(ex){
+            console.log(ex);
+        }
+    }
+
     static minorNode(heap){
         try{
             let minor = new Node(0, '');
