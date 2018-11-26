@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>JWT</title>
+        <meta charset="utf-8" />
+        <meta name="descrição" content="Login usando jtw para trabalho da faculdade" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+        <link rel='stylesheet' type='text/css' href='../assets/css/main.css'/>
+    </head>
+
+    <body>
+        <div class='container'>
+            <div class="header">
+                <div>
+                    <a href='#' id='logo'></a>
+                </div>
+                <h1>Comunidade JavaScriptters</h1>
+                <div>
+                    <button id='logout'></button>
+                </div>
+            </div>
+
+            <script>
+                
+                window.onload = function(){
+                    var title = document.getElementById('title');
+                    var cpf = document.getElementById('cpf');
+                    var logout = document.getElementById('logout');
+                    
+                    cpf.innerText = cpf.innerText.replace('&cpf', sessionStorage.getItem('cpf'));
+                    title.innerText = title.innerText.replace('&nome', sessionStorage.getItem('name'));
+                    title.innerText = title.innerText.replace('&idade', sessionStorage.getItem('age'));
+                    title.innerText = title.innerText.replace('&description', sessionStorage.getItem('description'));
+                
+                    logout.addEventListener('click', function(){
+                        sessionStorage.clear();
+                        window.location.href = './login.html';
+                    });
+                }
+            </script>
+
+            <div class="jumbotron" style="text-align: center; justify-content: center; align-content: space-between">
+                <h2 id="title">Bem Vindo &nome você tem &idade anos e as pessoas te chamam de &description !</h2>
+                <div>
+                    <img src='../assets/img/mosaic2.jpg' id='foto-perfil'/>    
+                </div>
+                <h2 id="cpf">CPF - &cpf</h2>
+            </div>
+        </div>
+    </body>
+</html>
