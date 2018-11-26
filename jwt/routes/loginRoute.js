@@ -7,19 +7,18 @@ urlencodeParser = bodyParser.urlencoded({extended: false});
 module.exports = function (app) {
     app.use(function(req, res, next) {
         res.header("Access-Control-Allow-Origin", "*");
-        res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+        res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
         next();
     });
 
     app.post('/login', (req, res, next) => {
         const datasource = new Datasource();
-        console.log(req.body);
         const login = req.body.login;
         const pass = req.body.pass;
-
+        console.log('post login');
+        
         datasource.isUserRegistered(login, pass)
             .then((isRegistred) => {
-                console.log('Result', isRegistred);
                 if(isRegistred) {
                     datasource.getUserIdByLoginAndPassword(login, pass)
                         .then((userId) => {
