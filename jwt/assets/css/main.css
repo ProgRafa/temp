@@ -30,7 +30,7 @@ body{
     height: 80px;
 }
 
-#logon{
+#logout{
     background: url('../img/login.png');
     background-position: center;
     background-size: cover; 
