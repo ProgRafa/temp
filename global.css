@@ -1,0 +1,172 @@
+html, body{
+    width: 100%;
+    height: 100%;
+}
+
+.btn-group-ajuste{
+	display: flex;
+	border: 2px solid #007bff;
+	border-radius: .25em;
+	width: 100%;
+	flex-wrap: wrap;
+}
+
+.btn-ajuste{
+	width: 10%;
+	font-size: 24px;
+	border: none;
+	border-radius: 0;
+	border-right: 1px solid #007bff;
+	border-bottom: 1px solid #007bff;
+	margin-left: 0px!important;
+	margin-bottom: -1px!important;
+	cursor: pointer;
+}
+
+.notFreeCell{
+	fill : white;
+	stroke : black;
+	stroke-width : 3;
+	stroke-dasharray : 3,3;
+}
+
+.freeCell{
+	fill : white;
+	stroke : black;
+	stroke-width : 3;
+	stroke-dasharray : 3,3;
+}
+
+.svgLabel{
+	fill: white;
+	font-size: 20px;
+	font-family: 'Arial';
+	transition: 3s all linear;
+	font-weight: 500;
+	cursor: not-allowed;
+	transition: .5s all linear;
+}
+
+.svgState{
+	r : 30; 
+	fill : orange;
+	stroke : black;
+	stroke-width : 1;
+	stroke-dasharray : none;
+	animation : none;
+	cursor: grab;
+}
+
+#keys{
+    min-width: 50px;
+    height: 40px;
+    margin: 10px;
+    border: 1px solid black;
+}
+
+.svg-link{
+   stroke : black;
+   stroke-width : 2;
+   transition: .5s all linear;
+}
+
+.row>h1{
+    width: 100%;
+}
+
+.col-1-10{
+	width: 10%;
+}
+
+.line{
+	position: absolute;
+	height: 5px;
+	background: black;
+}
+
+.hidden{
+	opacity: 0!important;
+	animation: none!important;
+	transition: .8s all linear;
+}
+
+.circle{
+	margin: 20px;
+	width: 60px;
+	height: 60px;
+	border: 2px dashed black;
+	border-radius: 50%;
+	background: white;
+	cursor: pointer;
+	animation: rotate 5s infinite linear;
+	transition: .8s all linear;
+}
+
+@keyframes selecionavel{
+	0% {stroke: black}
+	100% {stroke: red)}
+}
+
+@keyframes rotate{
+	0% {transform: rotateZ(0)}
+	100% {transform: rotateZ(360deg)}
+}
+
+.state{
+	display: flex;
+    width: 60px;
+    height: 60px;
+	margin: 10px auto;
+    border-radius: 50%;
+    background: orange;
+    align-items: center;
+    justify-content: center;
+    transition: all ease 0.8s;
+	cursor: pointer;
+}
+
+.stateSelected{
+    display: flex;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: orange;
+	opacity: .9;
+    align-items: center;
+    justify-content: center;
+    transition: all ease 0.8s;
+	cursor: pointer;
+}
+
+.initial{
+    border: 2px solid rgb(25, 140, 25);
+}
+.initial:after{
+    content: '';
+    position: absolute;
+    left: 0;
+    width: 35px;
+    height: 5px;
+    border-radius: 4px 0; 
+    background: black;
+}
+
+.final{
+    border: 2px solid black;
+}
+
+.final:before{
+    position: absolute;
+    content: '';
+    width: 50px;
+    height: 50px;
+    border: 2px solid black;
+    border-radius: 50%;
+}
+
+.stateInfo{
+	width: 100px;
+    margin: 5px auto;
+    border: none;
+    border-bottom: 2px solid black;
+}
