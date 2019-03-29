@@ -1,0 +1,98 @@
+<!doctype html>
+
+<html>
+	<head>
+		 <meta charset="utf-8">
+        <link rel="shortcut icon" type="image/jpg" href="./assets/img/icon.jpg"/>
+        <title>AFD - Configuração</title>
+        
+        <meta id="viewport" content="width=device-width, height=device-height, initial-scale=1">
+        
+        <link rel="stylesheet" href="./assets/css/bootstrap.min.css"/>
+        <link rel="stylesheet" href="./assets/css/global.css"/>
+	</head>
+	
+	<body>
+		<div class="container shadow-light">
+            <div class="row">
+                <h1 class="text-center">Automato Finito Determinístico</h1>
+            </div>
+			<div class="row d-flex align-items-center" style="margin: 30px">
+				<div class="col-sm d-flex flex-row-reverse">
+					<button class="shadow-dark btn btn-primary" id="executar">Executar</button>
+				</div>
+				
+				<div class="col-sm d-flex flex-row-reverse">
+					<button class="btn btn-primary shadow-dark" id="btnConfig">Configurar</button>
+				</div>
+			</div>
+			<div class="row d-flex align-items-center">
+				<div class="col-sm-1">
+					<label for="word">Palavra</label>
+				</div>
+				<div class="col-sm-3">
+					<input type="text" max="100" min="1" id="word"/>
+				</div>
+				<div class="col-sm-1">
+					<label for="alphabet">Alfabeto</label>
+				</div>
+				<div class="col-sm-3">
+					<input type="text" min="1" max="100" id="alphabet"/>
+				</div>
+				<div class="col-sm-4">
+					<label for="statesQtd">Qtd. de Estados</label>
+					<input readonly class="disabled" type="number" style="width: 40px; border: none" id="statesQtd"/> 
+					<div class="btn-group">
+						<button class="btn btn-outline-danger" id="btnSubState">-</button>
+						<button class="btn btn-danger" id="btnSumState">+</button>
+					</div>
+				</div>
+			</div>
+			<div class="row d-flex align-items-center">
+				<div class="col-sm-1">
+					<label for="stateID">Nome</label>
+				</div>
+				<div class="col-sm-1">
+					<input type="text" maxlength="3" min="1" id="stateID" style="width: 60px"/>
+				</div>
+				<div class="col-sm-2 btn-group" data-toggle="buttons">
+					<label for="inicial" class="btn btn-outline-secondary" onclick="btnActive()">
+						Inicial
+						<input type="checkbox" id="inicial"/>
+					</label>
+					<label for="final" class="btn btn-outline-secondary" onclick="btnActive()">
+						Final
+						<input type="checkbox" id="final"/>
+					</label>
+				</div>
+				<div class="col-sm">
+					<button class="btn btn-success" id="settar">OK</button>
+				</div>
+			</div>
+			<div class="row" id="alphabetData"></div>
+        </div>
+		
+		<div class="container shadow-light">
+			<div class="row">
+				<div class="btn-group" id="zoom">
+					<button class="btn btn-outline-danger" id="in">Zoom -</button>
+					<button class="btn btn-danger" id="out">Zoom +</button>
+				</div>
+				
+				<div class="col-sm d-flex flex-row-reverse">
+					<button class="shadow-dark btn btn-outline-primary" id="scroll">Ativar Scroll</button>
+				</div>
+				
+				<div class="col-sm d-flex flex-row-reverse">
+					<button class="shadow-dark btn btn-primary" id="proximo">Próximo</button>
+				</div>
+			</div>
+			<div class="row" id="machine"></div>
+		</div>
+		
+		<script src="./Exceptions.js"></script>
+		<script src="./geral.js"></script>
+		<script src="./SVGraph.js"></script>
+		<script src="./StateTargets.js"></script>
+	</body>
+</html>

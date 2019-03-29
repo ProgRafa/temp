@@ -1,0 +1,61 @@
+<!doctype html>
+
+<html>
+	<head>
+		 <meta charset="utf-8">
+        <link rel="shortcut icon" type="image/jpg" href="./assets/img/icon.jpg"/>
+        <title>AFD - Configuração</title>
+        
+        <meta id="viewport" content="width=device-width, height=device-height, initial-scale=1">
+        
+        <link rel="stylesheet" href="./assets/css/bootstrap.min.css"/>
+        <link rel="stylesheet" href="./assets/css/global.css"/>
+	</head>
+	
+	<body>
+		<div class="container">
+            <div class="row">
+                <h1 class="text-center">Automato Finito Determinístico</h1>
+            </div>
+        </div>
+		
+		<div class="jumbotron" id="data">
+			<div class="container">
+				<div class="row">
+					<div class="col-sm-3">
+						<label for="word">Palavra</label>
+						<input type="text" placeholder="Insira uma palavra para ser validada" id="word"/>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-sm-3">
+						<label for="alphabet">Alfabeto</label>
+						<input type="text" placeholder="Insira o alfabeto do automato" id="alphabet"/>
+					</div>
+				</div>
+				
+				<div class="row">
+					<div class="col-sm-3">
+						<h3>Estados</h3>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-sm-6">
+						<label for="statesQtd">Qtd. de Estados</label>
+						<input readonly class="disabled" type="number" style="width: 80px" id="statesQtd"/> 
+						<div class="btn-group">
+							<button class="btn btn-primary" id="btnSubState">-</button>
+							<button class="btn btn-primary" id="btnSumState">+</button>
+						</div>
+					</div>
+					<div class="col-sm-6">
+						<button class="btn btn-primary" id="btnConfig">Configurar </button>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<script src="./AFD.js"></script>
+		<script src="./AFDConfig.js"></script>
+	</body>
+</html>
